@@ -1,0 +1,318 @@
+Loading checkpoint shards:   0%|                                                         | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|████████████████████████▌                        | 1/2 [00:11<00:11, 11.28s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████████████| 2/2 [00:15<00:00,  7.13s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████████████| 2/2 [00:15<00:00,  7.76s/it]
+Traceback (most recent call last):
+  File "/home/spushpit/FNSPID/embedding_model_fitting.py", line 115, in <module>
+    main()
+  File "/home/spushpit/FNSPID/embedding_model_fitting.py", line 79, in main
+    X, y, _, _ = process_csv(csv_file)
+  File "/home/spushpit/FNSPID/embedding_model_fitting.py", line 64, in process_csv
+    embeddings = compute_embeddings(texts)
+  File "/home/spushpit/FNSPID/embedding_model_fitting.py", line 44, in compute_embeddings
+    output = model(encoded, output_hidden_states=True)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/accelerate/hooks.py", line 170, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/transformers/models/llama/modeling_llama.py", line 1190, in forward
+    outputs = self.model(
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/transformers/models/llama/modeling_llama.py", line 945, in forward
+    layer_outputs = decoder_layer(
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/accelerate/hooks.py", line 170, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/transformers/models/llama/modeling_llama.py", line 676, in forward
+    hidden_states, self_attn_weights, present_key_value = self.self_attn(
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/accelerate/hooks.py", line 170, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/transformers/models/llama/modeling_llama.py", line 498, in forward
+    attn_output = _flash_attention_forward(
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/transformers/modeling_flash_attention_utils.py", line 280, in _flash_attention_forward
+    attn_output = flash_attn_varlen_func(
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/flash_attn/flash_attn_interface.py", line 1407, in flash_attn_varlen_func
+    return FlashAttnVarlenFunc.apply(
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/autograd/function.py", line 574, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/flash_attn/flash_attn_interface.py", line 896, in forward
+    out_padded, softmax_lse, S_dmask, rng_state = _wrapped_flash_attn_varlen_forward(
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/_ops.py", line 1061, in __call__
+    return self_._op(*args, **(kwargs or {}))
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/_library/autograd.py", line 98, in autograd_impl
+    result = Generated.apply(*args, Metadata(keyset, keyword_only_args))  # type: ignore[attr-defined]
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/autograd/function.py", line 574, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/_library/autograd.py", line 40, in forward
+    result = op.redispatch(keyset & _C._after_autograd_keyset, *args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/_ops.py", line 672, in redispatch
+    return self_._handle.redispatch_boxed(keyset, *args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/torch/_library/custom_ops.py", line 236, in backend_impl
+    result = self._backend_fns[device_type](*args, **kwargs)
+  File "/home/spushpit/anaconda3/envs/qwenf/lib/python3.8/site-packages/flash_attn/flash_attn_interface.py", line 164, in _flash_attn_varlen_forward
+    out, softmax_lse, S_dmask, rng_state = flash_attn_cuda.varlen_fwd(
+TypeError: varlen_fwd(): incompatible function arguments. The following argument types are supported:
+    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: Optional[torch.Tensor], arg4: torch.Tensor, arg5: torch.Tensor, arg6: Optional[torch.Tensor], arg7: Optional[torch.Tensor], arg8: Optional[torch.Tensor], arg9: Optional[torch.Tensor], arg10: int, arg11: int, arg12: float, arg13: float, arg14: bool, arg15: bool, arg16: int, arg17: int, arg18: float, arg19: bool, arg20: Optional[torch.Generator]) -> list[torch.Tensor]
+
+Invoked with: tensor([[[ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         ...,
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00]],
+
+        [[ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         ...,
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00]],
+
+        [[ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         ...,
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00]],
+
+        ...,
+
+        [[ 1.0978e-18,  1.3485e-18, -1.3807e-19,  ...,  9.8120e-18,
+          -2.9816e-19,  1.3349e-18],
+         [ 5.7937e-19,  2.3446e-18, -3.0493e-18,  ..., -9.9204e-18,
+          -1.0842e-17, -2.9002e-18],
+         [ 3.1035e-18, -6.7085e-19,  1.6737e-18,  ..., -2.9680e-18,
+           1.3756e-18,  2.8189e-18],
+         ...,
+         [-4.2826e-18, -4.6079e-18,  2.4259e-18,  ..., -3.5237e-18,
+           6.6949e-18, -5.9631e-18],
+         [ 8.4703e-19,  1.5111e-18,  1.1858e-18,  ..., -4.0387e-18,
+          -1.3620e-18, -4.0387e-18],
+         [ 9.0802e-19, -2.9858e-20, -2.2904e-18,  ...,  6.4510e-18,
+           3.4152e-18, -1.8838e-18]],
+
+        [[ 1.1181e-18,  1.3756e-18, -1.6178e-19,  ...,  1.0029e-17,
+          -3.1510e-19,  1.3756e-18],
+         [ 5.9970e-19,  2.3852e-18, -3.1035e-18,  ..., -1.0192e-17,
+          -1.1113e-17, -2.9951e-18],
+         [ 3.1442e-18, -6.6407e-19,  1.7279e-18,  ..., -3.0493e-18,
+           1.4027e-18,  2.9138e-18],
+         ...,
+         [-4.3639e-18, -4.6892e-18,  2.4801e-18,  ..., -3.6050e-18,
+           6.8305e-18, -6.0986e-18],
+         [ 8.6059e-19,  1.5314e-18,  1.1994e-18,  ..., -4.1471e-18,
+          -1.3959e-18, -4.1200e-18],
+         [ 9.1480e-19, -4.4046e-20, -2.3446e-18,  ...,  6.5865e-18,
+           3.4966e-18, -1.9380e-18]],
+
+        [[ 2.1413e-18, -1.8160e-18, -5.1838e-19,  ...,  1.0354e-17,
+          -4.0115e-18,  7.4539e-20],
+         [-4.0996e-19, -1.0774e-18,  3.4559e-18,  ..., -1.0463e-17,
+           7.3726e-18,  2.3581e-18],
+         [ 3.7405e-18,  2.0193e-18, -1.2062e-18,  ..., -3.2391e-18,
+           4.9060e-18,  1.8106e-17],
+         ...,
+         [-1.0435e-18, -1.3688e-18, -1.8838e-18,  ..., -3.3610e-18,
+           3.5779e-18,  4.1742e-18],
+         [-1.6941e-18, -1.1316e-18, -1.1249e-18,  ..., -4.1200e-18,
+           7.8063e-18, -9.8933e-19],
+         [-2.9816e-19,  2.9951e-18,  2.0735e-18,  ...,  7.1557e-18,
+          -2.2362e-18, -4.3639e-18]]], device='cuda:1', dtype=torch.bfloat16), tensor([[[ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         ...,
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00]],
+
+        [[ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         ...,
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00]],
+
+        [[ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         ...,
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00]],
+
+        ...,
+
+        [[ 4.7163e-18, -1.8160e-18, -7.5894e-19,  ..., -8.9447e-18,
+          -1.4976e-18,  4.3639e-18],
+         [ 1.0978e-18, -2.3852e-18,  2.5614e-18,  ..., -2.8054e-18,
+          -8.0773e-18,  2.3039e-18],
+         [ 1.0706e-18,  8.3348e-19, -6.2342e-19,  ...,  4.9060e-18,
+           5.5023e-18, -6.0173e-18],
+         ...,
+         [-2.1955e-18, -3.4152e-18, -2.4395e-19,  ...,  4.3639e-18,
+           2.0871e-18, -5.9360e-18],
+         [-3.9472e-19,  3.7947e-18, -4.8450e-19,  ...,  3.6321e-18,
+           1.4501e-18, -3.9573e-18],
+         [-3.9844e-18,  1.2062e-18,  6.5052e-19,  ..., -3.1984e-18,
+          -7.6436e-18, -6.3155e-18]],
+
+        [[ 4.7976e-18, -1.8567e-18, -7.6911e-19,  ..., -9.0531e-18,
+          -1.5789e-18,  4.4452e-18],
+         [ 1.1113e-18, -2.4395e-18,  2.6156e-18,  ..., -2.9138e-18,
+          -8.2941e-18,  2.3175e-18],
+         [ 1.0978e-18,  8.3687e-19, -6.4036e-19,  ...,  4.9602e-18,
+           5.6379e-18, -6.1800e-18],
+         ...,
+         [-2.2633e-18, -3.4966e-18, -2.6427e-19,  ...,  4.4452e-18,
+           2.1142e-18, -6.0986e-18],
+         [-4.0658e-19,  3.8760e-18, -4.8789e-19,  ...,  3.6592e-18,
+           1.5043e-18, -4.0115e-18],
+         [-4.0658e-18,  1.2468e-18,  6.7763e-19,  ..., -3.2797e-18,
+          -7.7520e-18, -6.4510e-18]],
+
+        [[ 3.7676e-18, -6.5052e-19,  1.5247e-19,  ..., -9.3783e-18,
+          -1.1655e-18,  8.3484e-18],
+         [ 9.3512e-19, -1.2672e-18, -2.8596e-18,  ..., -3.1035e-18,
+           3.6321e-18,  2.2226e-18],
+         [-2.6427e-19, -1.0503e-18,  1.3281e-18,  ...,  4.8518e-18,
+          -1.0164e-18,  3.7947e-19],
+         ...,
+         [-2.3310e-18,  2.4801e-18,  1.1113e-18,  ...,  4.9331e-18,
+           4.4046e-19, -2.2362e-18],
+         [-8.7414e-19, -1.0300e-18,  1.0842e-19,  ...,  3.8218e-18,
+           9.8933e-19,  1.7347e-18],
+         [-4.6892e-18, -4.4723e-18, -1.0232e-18,  ..., -3.1848e-18,
+           4.7976e-18, -4.1200e-18]]], device='cuda:1', dtype=torch.bfloat16), tensor([[[ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         ...,
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00]],
+
+        [[ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         ...,
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00]],
+
+        [[ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         ...,
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00],
+         [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+           0.0000e+00,  0.0000e+00]],
+
+        ...,
+
+        [[-4.6163e-20,  4.0387e-18, -5.1229e-18,  ...,  4.4994e-18,
+          -3.7134e-18, -7.8943e-19],
+         [-8.6736e-19,  1.9990e-19, -4.0149e-19,  ...,  2.7241e-18,
+          -1.1011e-19, -9.4868e-19],
+         [ 2.3581e-18, -4.0929e-18,  1.0571e-18,  ...,  8.3009e-19,
+           8.1315e-19, -1.1316e-18],
+         ...,
+         [ 1.5314e-18,  1.0910e-18,  1.3383e-19,  ...,  1.5179e-18,
+          -5.5565e-19, -1.4772e-18],
+         [-7.3522e-19, -9.0802e-19,  1.5314e-18,  ...,  1.8702e-18,
+          -2.9951e-18, -4.5062e-19],
+         [ 1.9922e-18,  2.1413e-18, -3.3881e-18,  ...,  3.7676e-18,
+           2.6698e-18, -1.3891e-18]],
+
+        [[-6.1410e-20,  4.1200e-18, -5.2313e-18,  ...,  4.5808e-18,
+          -3.8218e-18, -8.1654e-19],
+         [-8.9447e-19,  2.2700e-19, -4.2690e-19,  ...,  2.7918e-18,
+          -1.2960e-19, -9.4868e-19],
+         [ 2.4123e-18, -4.1742e-18,  1.0639e-18,  ...,  8.5720e-19,
+           8.3687e-19, -1.1587e-18],
+         ...,
+         [ 1.5653e-18,  1.1113e-18,  1.3976e-19,  ...,  1.5382e-18,
+          -5.8276e-19, -1.5043e-18],
+         [-7.6911e-19, -9.5545e-19,  1.5789e-18,  ...,  1.9245e-18,
+          -3.0629e-18, -4.6756e-19],
+         [ 2.0735e-18,  2.1955e-18, -3.4694e-18,  ...,  3.8489e-18,
+           2.7105e-18, -1.4027e-18]],
+
+        [[-6.3527e-20,  4.2013e-18, -5.3397e-18,  ...,  4.6892e-18,
+          -3.8760e-18, -8.0976e-19],
+         [-8.8769e-19,  2.0413e-19, -4.2860e-19,  ...,  2.8460e-18,
+          -1.2875e-19, -9.8256e-19],
+         [ 2.4530e-18, -4.2826e-18,  1.1045e-18,  ...,  8.5720e-19,
+           8.6397e-19, -1.1791e-18],
+         ...,
+         [ 1.5992e-18,  1.1113e-18,  1.4908e-19,  ...,  1.6060e-18,
+          -5.9970e-19, -1.5247e-18],
+         [-8.0976e-19, -9.8933e-19,  1.6128e-18,  ...,  1.9651e-18,
+          -3.1577e-18, -4.6417e-19],
+         [ 2.1006e-18,  2.2226e-18, -3.5237e-18,  ...,  3.9302e-18,
+           2.7783e-18, -1.4366e-18]]], device='cuda:1', dtype=torch.bfloat16), None, tensor([129], device='cuda:1', dtype=torch.int32), tensor([129], device='cuda:1', dtype=torch.int32), None, None, None, None, 4575655669842114194, 4575655669842114194, 0.0, 0.08838834764831845, False, True, -1, -1, 0.0, False, None

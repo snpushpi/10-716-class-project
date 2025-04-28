@@ -15,4 +15,4 @@ source /home/spushpit/anaconda3/bin/activate
 conda activate TVLT
 
 # Run the Python script
-python run_stuff.py
+python run_experiments_for_report.py
