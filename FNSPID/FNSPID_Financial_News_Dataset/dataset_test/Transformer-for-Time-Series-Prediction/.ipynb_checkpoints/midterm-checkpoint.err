@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "run_stuff.py", line 141, in <module>
+    model = train(input_length, output_length, dataloader_train, scaler)
+  File "run_stuff.py", line 78, in train
+    model = Transformer(d_input, d_model, d_output, q, v, h, N, attention_size=attention_size, dropout=dropout, chunk_mode=chunk_mode, pe=pe).to(device)
+NameError: name 'device' is not defined
