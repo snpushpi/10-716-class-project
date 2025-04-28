@@ -15,7 +15,8 @@ CSV_FILES      = [
     "/data/user_data/spushpit/FNSPID/stock_news_author_integrated/USO.csv",
     "/data/user_data/spushpit/FNSPID/stock_news_author_integrated/ORCL.csv",
     "/data/user_data/spushpit/FNSPID/stock_news_author_integrated/GSK.csv",
-    "/data/user_data/spushpit/FNSPID/stock_news_author_integrated/BIDU.csv"
+    "/data/user_data/spushpit/FNSPID/stock_news_author_integrated/BIDU.csv",
+"/data/user_data/spushpit/FNSPID/stock_news_author_integrated/EBAY.csv"
 ]
 TEXT_COL       = "New_text"
 CLOSE_COL      = "Close"
@@ -27,7 +28,7 @@ RANDOM_SEED    = 42
 # === Model for embeddings ===
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model_name = "meta-llama/Llama-2-7b-hf"
-access_token = "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"
+access_token = #your token here
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     torch_dtype=torch.bfloat16,
@@ -41,7 +42,6 @@ tokenizer = AutoTokenizer.from_pretrained(model_name, token=access_token)
 def compute_embeddings(texts):
     all_embs = []
     for text in texts:
-        print(text)
         encoded = tokenizer.encode(text, return_tensors='pt').to(device)
         with torch.no_grad():
             output = model(encoded, output_hidden_states=True)

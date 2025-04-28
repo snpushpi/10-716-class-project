@@ -28,7 +28,7 @@ RANDOM_SEED    = 42
 # === Model for embeddings ===
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model_name = "meta-llama/Llama-2-7b-hf"
-access_token = "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"
+access_token = #your token here
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     torch_dtype=torch.bfloat16,

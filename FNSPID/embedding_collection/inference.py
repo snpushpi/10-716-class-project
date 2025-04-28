@@ -13,7 +13,7 @@ CLOSE_COL     = "Close"                       # same close‐price column (neede
 INPUT_LENGTH  = 50
 MODEL_PATH    = "ridge_model.joblib"
 MODEL_NAME    = "meta-llama/Llama-2-7b-hf"
-ACCESS_TOKEN  = "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"
+ACCESS_TOKEN  = #your token here
 DEVICE        = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # 2) Load model + tokenizer

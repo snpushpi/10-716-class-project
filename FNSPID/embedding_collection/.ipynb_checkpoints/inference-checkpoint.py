@@ -13,7 +13,7 @@ CLOSE_COL     = "Close"                       # same close‐price column (neede
 INPUT_LENGTH  = 50
 MODEL_PATH    = "ridge_model.joblib"
 MODEL_NAME    = "meta-llama/Llama-2-7b-hf"
-ACCESS_TOKEN  = "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"
+ACCESS_TOKEN  = #your token here
 DEVICE        = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # 2) Load model + tokenizer
@@ -26,36 +26,34 @@ model    = AutoModel.from_pretrained(
                device_map="auto",
                attn_implementation="flash_attention_2",
                token=ACCESS_TOKEN
-           ).to(DEVICE)
+           )
 
-model.config.use_cache = False     #  ⬅︎ turn the cache off
+model.config.use_cache = False
 model.eval()
 
-@torch.inference_mode()            # same as no_grad + a few extras
+# ── figure out where the embeddings layer ended up
+first_device = next(iter(model.hf_device_map.values()))   # e.g. "cuda:0"
 
-def compute_embeddings(texts, max_len=256, batch_size=8):
-    """Return an (N, D) NumPy array of mean‑pooled last‑layer embeddings."""
+@torch.inference_mode()   # e.g. "cuda:0"
+
+def compute_embeddings(texts, max_len=256, batch_size=4):
     embs = []
-
     for i in range(0, len(texts), batch_size):
-        batch = texts[i:i+batch_size]
-
-        enc = tokenizer(
-            batch,
+        tok = tokenizer(
+            texts[i:i+batch_size],
             padding=True,
             truncation=True,
             return_tensors="pt"
-        ).to(model.device)
+        )
+        # **only** move inputs to the first device
+        tok = {k: v.to(first_device) for k, v in tok.items()}
 
-        out = model(**enc, output_hidden_states=True, use_cache=False)
-        last = out.hidden_states[-1].mean(dim=1)           # (B, D)
+        out  = model(**tok, output_hidden_states=False, use_cache=False)
+        last = out.last_hidden_state.mean(dim=1)
 
         embs.append(last.float().cpu().numpy())
-        # aggressively release blocks & defragment
-        del enc, out, last
+        del tok, out, last
         torch.cuda.empty_cache()
-        gc.collect()
-
     return np.vstack(embs)
 
 
@@ -123,11 +121,12 @@ if __name__ == "__main__":
         f for f in os.listdir(parent_dir_in)
         if os.path.isfile(os.path.join(parent_dir_in, f))
     ]
-    
+    done_set = []
     # 4) filter out the trained ones
     to_train = [f for f in all_in_dir if f not in trained_set]
+    to_trainf = [f for f in to_train if f not in done_set]
     
-    for fname in sorted(to_train):
+    for fname in sorted(to_trainf):
         CSV_IN = os.path.join(parent_dir_in, fname)
         CSV_OUT = os.path.join(parent_dir_out, fname)
         main(CSV_IN,CSV_OUT)
